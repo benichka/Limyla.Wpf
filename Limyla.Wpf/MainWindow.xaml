@@ -1,0 +1,69 @@
+﻿<Window x:Class="Limyla.Wpf.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="using:Limyla.Wpf"
+        xmlns:vm="using:Limyla.Wpf.ViewModels"
+        mc:Ignorable="d"
+        Title="Limyla" Height="450" Width="800">
+
+    <Grid Style="{StaticResource GridStyle}">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="163*"/>
+            <ColumnDefinition Width="37*"/>
+        </Grid.ColumnDefinitions>
+        <TextBlock x:Name="errorTextBlock" Text="{Binding Path=ViewModel.ErrorMessage, Mode=OneWay}" Grid.ColumnSpan="2" />
+        <Grid x:Name="tabularView" Visibility="Visible" Grid.ColumnSpan="2">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="*" />
+                <RowDefinition Height="*" />
+                <RowDefinition Height="3*" />
+                <RowDefinition Height="5*" />
+            </Grid.RowDefinitions>
+            <TextBlock Grid.Row="0" Style="{StaticResource TabularHeaderStyle}" Text="Limyla" />
+            <Grid Grid.Row="2">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="*" />
+                    <RowDefinition Height="*" />
+                    <RowDefinition Height="*" />
+                    <RowDefinition Height="*" />
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="3*" />
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="3*" />
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="3*" />
+                    <ColumnDefinition Width="*" />
+                </Grid.ColumnDefinitions>
+
+                <TextBlock Style="{StaticResource LabelStyle}" Grid.Row="0" Grid.Column="1" Text="L" />
+                <TextBlock Style="{StaticResource LabelStyle}" Grid.Row="0" Grid.Column="3" Text="l" />
+                <TextBlock Style="{StaticResource LabelStyle}" Grid.Row="0" Grid.Column="5" Text="d" />
+
+                <TextBox Text="{Binding Path=ViewModel.Length, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" Style="{StaticResource ContentStyle}" Grid.Row="1" Grid.Column="1" x:Name="tLength" InputScope="Number" />
+                <TextBox Text="{Binding Path=ViewModel.Width, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" Style="{StaticResource ContentStyle}" Grid.Row="1" Grid.Column="3" x:Name="tWidth" InputScope="Number" />
+                <TextBox Text="{Binding Path=ViewModel.Distance, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" Style="{StaticResource ContentStyle}" Grid.Row="1" Grid.Column="5" x:Name="tDistance" InputScope="Number" />
+
+                <TextBlock Style="{StaticResource LabelStyle}" Grid.Row="3" Grid.Column="1" Text="Hauteur estimée" />
+                <TextBox Style="{StaticResource ContentStyle}" Text="{Binding Path=ViewModel.EstimatedHeight, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" Grid.Row="3" Grid.Column="3" x:Name="tEstimatedHeight" InputScope="Number" />
+
+            </Grid>
+            <Grid Grid.Row="3">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="*" />
+                    <RowDefinition Height="10*" />
+                    <RowDefinition Height="*" />
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="3*" />
+                    <ColumnDefinition Width="*" />
+                </Grid.ColumnDefinitions>
+                <Image Grid.Row="1" Grid.Column="1" Source="/Images/schema.png" />
+            </Grid>
+        </Grid>
+    </Grid>
+</Window>
